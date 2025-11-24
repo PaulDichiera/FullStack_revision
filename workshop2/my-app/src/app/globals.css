@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+:root {
+  --background-main: #020202;
+  --background-nav: #f44a4a;
+  --background-footer: #7bf6bb;
+  --header-height: 18vh;
+  --nav-height: 65vh;
+  --footer-height: 20vh;
+}
+
+.header{
+  grid-area: header;
+  background-color: var(--background-main);
+  padding: 1rem;
+}
+
+.nav{
+  grid-area: nav;
+  background-color: var(--background-nav);
+  padding: 1rem;
+}
+
+.main{
+  grid-area: main;
+  background-color: var(--background-main);
+  padding: 1rem;
+}
+
+.footer{
+  grid-area: footer;
+  background-color: var(--background-footer);
+  padding: 1rem;
+}
+
+.layout{
+  min-height: 100vh;
+  display: grid;
+  grid-template-areas:
+  "header header"
+  "nav main"
+  "footer footer";
+  grid-template-rows: var(--header-height) var(--nav-height) var(--footer-height);
+  grid-template-columns: 1fr 6fr; 
+}
+
