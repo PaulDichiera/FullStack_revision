@@ -1,10 +1,8 @@
 "use client"
-import React,{useState} from'react';
-import Header from "../../components/Header";
+import React,{useState} from'react'
+import Header from "../../components/Header"
 import Navigation from "../../components/Footer"
-import Footer from "../../components/Naviagation"
-
-
+import Footer from "../../components/Navigation"
 
 
 
@@ -14,9 +12,29 @@ export default function Login(){
     const [username, setUsername] = useState("");
 
     const handleSubmit = (e: React.FormEvent) => {
+
+        // checks if item is in localstorage 
+
+        if (localStorage.getItem('username')){
+            // log user in, goes to home page. past confirmation page
+        }else{
+            // user not found, user is notified
+        }
+
+
+
+
         e.preventDefault();
         console.log("entered form function");
+        console.log("Username: ", username, "Password: ", password)
     }
+
+    // set up local storage 
+    // validation with paassword and uername inputs 
+    // login with success popup 
+    // logoout with success popup
+
+
     return(
         <div>
             <main className="layout">
@@ -24,16 +42,24 @@ export default function Login(){
                 <Navigation />
                     <div>
                         <form onSubmit={handleSubmit}>
-                            <label className="block mb0-4">
+                            <label className="block mb-4">
                                 Username:
                             </label>
                             <input className="bg-blue-300 text-white block mb-4"
-                            type="username"
+                            type="text"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                             required
                             />
-                        
+                            <label className="block mb-4">
+                                Password:
+                            </label>
+                            <input className="bg-blue-300 text-white block mb-4"
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                            />
                             <button className="bg-blue-300 text-white px-4" type="submit">
                                 Submit
                             </button>

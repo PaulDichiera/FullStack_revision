@@ -1,6 +1,6 @@
 import Header from "../../components/Header";
 import Navigation from "../../components/Footer"
-import Footer from "../../components/Naviagation"
+import Footer from "../../components/Navigation"
 
 
 export default function Forum(){

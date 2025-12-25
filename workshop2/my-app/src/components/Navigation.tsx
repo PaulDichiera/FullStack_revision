@@ -26,6 +26,11 @@ const Navigation = () => {
                         Form
                     </Link>
                 </li>
+                <li>
+                    <Link href= "/signup">
+                        Sign Up
+                    </Link>
+                </li>
             </ul>
         </nav>
     );
