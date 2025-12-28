@@ -3,6 +3,9 @@ import React,{useState} from'react'
 import Header from "../../components/Header"
 import Navigation from "../../components/Footer"
 import Footer from "../../components/Navigation"
+import { useAuth} from "../../contexts/AuthContext"
+import { useRouter } from "next/navigation"
+
 
 
 
@@ -10,27 +13,30 @@ export default function Login(){
 
     const [password, setPassword] = useState("");
     const [username, setUsername] = useState("");
+    const [error, setError] = useState("");
+    const {login} = useAuth();
+    const router = useRouter();
 
     const handleSubmit = (e: React.FormEvent) => {
 
-        // checks if item is in localstorage 
-
-        if (localStorage.getItem('username')){
-            // log user in, goes to home page. past confirmation page
-        }else{
-            // user not found, user is notified
-        }
-
-
-
-
         e.preventDefault();
+        setError("");
         console.log("entered form function");
         console.log("Username: ", username, "Password: ", password)
-    }
 
-    // set up local storage 
-    // validation with paassword and uername inputs 
+        const success = login(username, password);
+        if(success) {
+            router.push("/forum");
+
+        } else {
+            setError("Invalid username or password");
+        }
+    };
+
+    console.log(error);
+
+    // set up local storage - in Auth context
+    // validation with paassword and uername inputs - required
     // login with success popup 
     // logoout with success popup
 

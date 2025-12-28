@@ -35,19 +35,23 @@ export function AuthProvider({ children }: { children: React.ReactNode}){
             setUsers(SAVED_USERS);
         } else {
             setUsers(JSON.parse(storedUsers));
-        }
-    })
+    }
 
     // check for existing login
     const storedUser = localStorage.getItem("currentUser");
     if (storedUser) {
         setUser(JSON.parse(storedUser));
-    }
+        }
+    }, []); // this was missing and created an infinate loop, it limits the loading to once per page load.
 
 
     // the username and password input are passed in and the users array is searched for a match
     // login is set to true and sent back to the UI to confirm match and login
     const login = (username: string, password: string): boolean => {
+        console.log("username: ", username, "password: ", password);
+        const storedUsers = localStorage.getItem("users");
+        setUsers(JSON.parse(storedUsers));
+        
         const foundUser = users.find(
             (user) => user.username === username && user.password === password
         );
