@@ -1,4 +1,4 @@
-
+"use clinet"
 const Footer = () => {
     return(
         <footer className="footer">
