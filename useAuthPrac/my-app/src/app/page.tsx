@@ -11,6 +11,8 @@ export default function Home(){
             <Navigation/>
             <div className="main">
 
+                
+
             </div>
             <Footer/>
         </main>
